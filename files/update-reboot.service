@@ -1,0 +1,12 @@
+[Unit]
+Description=Post-reboot hook after update
+After=multi-user.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/update-reboot.sh
+RemainAfterExit=true
+
+[Install]
+WantedBy=multi-user.target
+

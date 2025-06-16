@@ -1,0 +1,12 @@
+[Unit]
+Description=Post-update hook
+After=multi-user.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/update-post.sh
+RemainAfterExit=true
+
+[Install]
+WantedBy=multi-user.target
+
