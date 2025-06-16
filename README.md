@@ -12,6 +12,7 @@ This layer provides:
 - BitBake class extensions:
   - `mycustom-license.bbclass`: Declares a local license and checksum
   - `mycustom-minwite.bbclass`: Configure minimal filesystem write features (optional)
+  - `mycustom-ota.bbclass`: Enables OTA support with post-update + reboot hooks
   - `mycustom-security.bbclass`: Injects security best practices
   - `mycustom-systemd.bbclass`: Installs systemd unit files for recipes
 - Image extension via `balena-image.bbappend`
@@ -21,6 +22,7 @@ This layer provides:
 ├── classes
 │   ├── mycustom-license.bbclass
 │   ├── mycustom-minwrite.bbclass
+│   ├── mycustom-ota.bbclass
 │   ├── mycustom-security.bbclass
 │   └── mycustom-systemd.bbclass
 ├── conf
@@ -29,8 +31,13 @@ This layer provides:
 │   ├── hello.service
 │   ├── LICENSE
 │   ├── sshd_config_append
-|   ├── update-pre.service
+│   ├── update-post.service
+│   ├── update-post.sh
+│   ├── update-pre.service
+│   ├── update-reboot.service
+│   ├── update-reboot.sh
 │   └── var-log.mount
+├── README.md
 └── recipes-core
     ├── hello
     │   └── hello_1.0.bb
