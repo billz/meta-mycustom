@@ -11,6 +11,7 @@ This layer provides:
 - A centralized custom license file
 - BitBake class extensions:
   - `mycustom-license.bbclass`: Declares a local license and checksum
+  - `mycustom-minwite.bbclass`: Configure minimal filesystem write features (optional)
   - `mycustom-security.bbclass`: Injects security best practices
   - `mycustom-systemd.bbclass`: Installs systemd unit files for recipes
 - Image extension via `balena-image.bbappend`
@@ -19,6 +20,7 @@ This layer provides:
 ```
 ├── classes
 │   ├── mycustom-license.bbclass
+│   ├── mycustom-minwrite.bbclass
 │   ├── mycustom-security.bbclass
 │   └── mycustom-systemd.bbclass
 ├── conf
@@ -26,7 +28,9 @@ This layer provides:
 ├── files
 │   ├── hello.service
 │   ├── LICENSE
-│   └── update-pre.service
+│   ├── sshd_config_append
+|   ├── update-pre.service
+│   └── var-log.mount
 └── recipes-core
     ├── hello
     │   └── hello_1.0.bb
@@ -40,6 +44,8 @@ Add the layer to `bblayers.conf`:
 BBLAYERS += "${TOPDIR}/../layers/meta-mycustom"
 ```
 
+To disable minimal filsystem write mode, set `MINWRITE_ENABLED = "0"` in `conf/layer.conf`.
+ 
 ## Requirements
 - A Yocto Project compatible environment
 - balenaOS build system (eg., balena-raspberrypi)
