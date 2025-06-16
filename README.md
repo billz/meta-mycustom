@@ -11,6 +11,7 @@ This layer provides:
 - A centralized custom license file
 - BitBake class extensions:
   - `mycustom-license.bbclass`: Declares a local license and checksum
+  - `mycustom-security.bbclass`: Injects security best practices
   - `mycustom-systemd.bbclass`: Installs systemd unit files for recipes
 - Image extension via `balena-image.bbappend`
 
@@ -18,6 +19,7 @@ This layer provides:
 ```
 ├── classes
 │   ├── mycustom-license.bbclass
+│   ├── mycustom-security.bbclass
 │   └── mycustom-systemd.bbclass
 ├── conf
 │   └── layer.conf
