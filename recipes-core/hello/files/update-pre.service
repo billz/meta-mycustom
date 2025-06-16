@@ -1,0 +1,8 @@
+[Unit]
+Description=Custom Pre-Update Hook
+DefaultDependencies=no
+Before=update-engine.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/echo "Running update-pre..."

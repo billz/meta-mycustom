@@ -1,0 +1,9 @@
+[Unit]
+Description=Hello World Service
+
+[Service]
+Type=oneshot
+ExecStart=/bin/echo "Hello from Yocto!"
+
+[Install]
+WantedBy=multi-user.target
