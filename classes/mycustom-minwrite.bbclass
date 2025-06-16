@@ -5,6 +5,15 @@
 FILESEXTRAPATHS:prepend := "${LAYERDIR}/files:"
 SRC_URI += "file://var-log.mount"
 
+# prevent recommended packages that cause unnecessary writes
+BAD_RECOMMENDATIONS += " \
+    dphys-swapfile \
+    logrotate \
+    rsyslog \
+    systemd-timesyncd \
+    systemd-journal-gatewayd \
+"
+
 do_install:append() {
     if [ "${MINWRITE_ENABLED}" = "1" ]; then
         bbnote "Applying minimal write mode"
