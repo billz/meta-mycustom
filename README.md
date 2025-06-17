@@ -7,13 +7,14 @@ Custom Yocto layer for balenaOS builds, with example systemd services, license  
 This layer provides:
 
 - A sample `hello` service recipe (`hello_1.0.bb`)
-- Shared systemd unit files (`hello.service`, `update-pre.service`)
+- A functional `network-monitor` service recipe (`network-monitor_1.0.bb`)
+- Shared systemd unit files (`hello.service`, `update-pre.service`, `network-activity@.service`)
 - A centralized custom license file
 - BitBake class extensions:
   - `mycustom-license.bbclass`: Declares a local license and checksum
   - `mycustom-minwite.bbclass`: Configure minimal filesystem write features (optional)
   - `mycustom-networkmonitor.bbclass`: A lightweight network activity monitor for embedded systems 
-  - `mycustom-ota.bbclass`: Enables OTA support with post-update + reboot hooks
+  - `mycustom-ota.bbclass`: Enables OTA support with update-pre, post + reboot hooks
   - `mycustom-security.bbclass`: Injects security best practices
   - `mycustom-systemd.bbclass`: Installs systemd unit files for recipes
 - Image extension via `balena-image.bbappend`
