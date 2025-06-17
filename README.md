@@ -12,6 +12,7 @@ This layer provides:
 - BitBake class extensions:
   - `mycustom-license.bbclass`: Declares a local license and checksum
   - `mycustom-minwite.bbclass`: Configure minimal filesystem write features (optional)
+  - `mycustom-networkmonitor.bbclass`: A lightweight network activity monitor for embedded systems 
   - `mycustom-ota.bbclass`: Enables OTA support with post-update + reboot hooks
   - `mycustom-security.bbclass`: Injects security best practices
   - `mycustom-systemd.bbclass`: Installs systemd unit files for recipes
@@ -22,6 +23,7 @@ This layer provides:
 ├── classes
 │   ├── mycustom-license.bbclass
 │   ├── mycustom-minwrite.bbclass
+│   ├── mycustom-networkmonitor.bbclass
 │   ├── mycustom-ota.bbclass
 │   ├── mycustom-security.bbclass
 │   └── mycustom-systemd.bbclass
@@ -38,11 +40,17 @@ This layer provides:
 │   ├── update-reboot.sh
 │   └── var-log.mount
 ├── README.md
-└── recipes-core
-    ├── hello
-    │   └── hello_1.0.bb
-    └── images
-        └── balena-image.bbappend
+├── recipes-core
+│   ├── hello
+│   │   └── hello_1.0.bb
+│   └── images
+│       └── balena-image.bbappend
+└── recipes-utils
+    └── network-monitor
+        ├── files
+        │   ├── network-activity@.service
+        │   └── network-monitor.c
+        └── network-monitor_1.0.bb
 ```
 
 ## Usage
