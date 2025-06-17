@@ -1,1 +1,1 @@
-IMAGE_INSTALL:append = " hello"
+IMAGE_INSTALL:append = " hello network-monitor"
