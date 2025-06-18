@@ -7,6 +7,7 @@ Custom Yocto layer for balenaOS builds, with example systemd services, license  
 This layer provides:
 
 - A sample `hello` service recipe (`hello_1.0.bb`)
+- A kernel update to `linux-balena` that enables USB-to-serial converter chips
 - A functional `network-monitor` service recipe (`network-monitor_1.0.bb`)
 - Shared systemd unit files (`hello.service`, `update-pre.service`, `network-activity@.service`)
 - A centralized custom license file
@@ -21,6 +22,7 @@ This layer provides:
 
 ## Layer Structure
 ```
+├── bblayers.conf
 ├── classes
 │   ├── mycustom-license.bbclass
 │   ├── mycustom-minwrite.bbclass
@@ -46,6 +48,11 @@ This layer provides:
 │   │   └── hello_1.0.bb
 │   └── images
 │       └── balena-image.bbappend
+├── recipes-kernel
+│   └── linux
+│       └── linux-balena
+│           ├── linux-balena_%.bbappend
+│           └── my-kernel.cfg
 └── recipes-utils
     └── network-monitor
         ├── files
