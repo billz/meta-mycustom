@@ -8,6 +8,7 @@ This layer provides:
 
 - A sample `hello` service recipe (`hello_1.0.bb`)
 - A kernel update to `linux-balena` that enables USB-to-serial converter chips
+- A kernel update to `linux-balena' that enables UART on GPIO14/15 (ttyAMA0)
 - A functional `network-monitor` service recipe (`network-monitor_1.0.bb`)
 - Shared systemd unit files (`hello.service`, `update-pre.service`, `network-activity@.service`)
 - A centralized custom license file
@@ -52,7 +53,8 @@ This layer provides:
 │   └── linux
 │       └── linux-balena
 │           ├── linux-balena_%.bbappend
-│           └── my-kernel.cfg
+│           ├── my-kernel.cfg
+│           └── my-serial.cfg
 └── recipes-utils
     └── network-monitor
         ├── files
