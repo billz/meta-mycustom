@@ -6,9 +6,11 @@ Custom Yocto layer for balenaOS builds, with example systemd services, license  
 
 This layer provides:
 
-- A sample `hello` service recipe (`hello_1.0.bb`)
-- A kernel update to `linux-balena` that enables USB-to-serial converter chips
-- A kernel update to `linux-balena` that enables UART on GPIO14/15 (`ttyAMA0`)
+- A `hello` service recipe (`hello_1.0.bb`) that inherits several .bbclass files
+- Several kernel updates to `linux-raspberrypi`:
+  - Enables USB-to-serial converter chips in `my-serial.cfg`
+  - Enables UART on GPIO14/15 (`ttyAMA0`) in `my-kernel.cfg`
+  - Patches the `ftdi_sio.c` USB-to-serial driver in `my-driver.*` 
 - A functional `network-monitor` service recipe (`network-monitor_1.0.bb`)
 - Shared systemd unit files (`hello.service`, `update-pre.service`, `network-activity@.service`)
 - A centralized custom license file
@@ -51,10 +53,11 @@ This layer provides:
 │       └── balena-image.bbappend
 ├── recipes-kernel
 │   └── linux
-│       └── linux-balena
-│           ├── linux-balena_%.bbappend
-│           ├── my-kernel.cfg
-│           └── my-serial.cfg
+│       ├── linux-raspberrypi_%.bbappend
+│       ├── my-driver.cfg
+│       ├── my-driver.patch
+│       ├── my-kernel.cfg
+│       └── my-serial.cfg
 └── recipes-utils
     └── network-monitor
         ├── files

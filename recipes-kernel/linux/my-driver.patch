@@ -1,0 +1,34 @@
+From 07fb7429e52f87c14c067916e96095248bb56de5 Mon Sep 17 00:00:00 2001
+From: billz <billzimmerman@gmail.com>
+Date: Wed, 18 Jun 2025 13:08:32 +0000
+Subject: [PATCH] From: Your Name <billzimmerman@gmail.com> Date: Wed, 18 Jun
+ 2025 10:00:00 +0200 Subject: [PATCH] usb: serial: ftdi_sio: Add debug message
+ on device probe
+
+Adds a debug message to help track when FTDI devices are being probed
+by the driver. Useful for debugging device detection issues
+and understanding driver behavior.
+
+Signed-off-by: billz <billzimmerman@gmail.com>
+---
+ drivers/usb/serial/ftdi_sio.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/drivers/usb/serial/ftdi_sio.c b/drivers/usb/serial/ftdi_sio.c
+index eef614be7db5..33501104abff 100644
+--- a/drivers/usb/serial/ftdi_sio.c
++++ b/drivers/usb/serial/ftdi_sio.c
+@@ -2192,6 +2192,10 @@ static int ftdi_probe(struct usb_serial *serial, const struct usb_device_id *id)
+ {
+ 	const struct ftdi_quirk *quirk = (struct ftdi_quirk *)id->driver_info;
+ 
++	dev_dbg(&serial->dev->dev, "FTDI device probe: VID=0x%04x PID=0x%04x\n",
++                le16_to_cpu(serial->dev->descriptor.idVendor),
++                le16_to_cpu(serial->dev->descriptor.idProduct));
++
+ 	if (quirk && quirk->probe) {
+ 		int ret = quirk->probe(serial);
+ 		if (ret != 0)
+-- 
+2.43.0
+
