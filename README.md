@@ -10,8 +10,8 @@ This layer provides:
 - Several kernel updates to `linux-raspberrypi`:
   - Enables USB-to-serial converter chips in `my-serial.cfg`
   - Enables UART on GPIO14/15 (`ttyAMA0`) in `my-kernel.cfg`
-  - Patches the `ftdi_sio.c` USB-to-serial driver in `my-driver.*` 
-- A functional `network-monitor` service recipe (`network-monitor_1.0.bb`)
+  - Patches the `ftdi_sio.c` USB-to-serial driver in `my-driver.*` (in-tree)
+- A functional `network-monitor` service recipe in `network-monitor_1.0.bb` (adapted from [RaspAP](https://github.com/RaspAP/raspap-webgui/blob/master/installers/raspap-network-monitor.c))
 - Shared systemd unit files (`hello.service`, `update-pre.service`, `network-activity@.service`)
 - A centralized custom license file
 - BitBake class extensions:
